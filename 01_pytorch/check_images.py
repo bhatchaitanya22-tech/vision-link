@@ -2,7 +2,7 @@ import os
 import cv2
 
 folder = os.path.expanduser(
-    '~/perception_map/data/raw/batch_01'
+    '~/perception_map/data/raw/batch_03'
 )
 
 images = [f for f in os.listdir(folder) 
