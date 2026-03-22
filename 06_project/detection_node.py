@@ -24,6 +24,10 @@ class DetectionNode(Node):
     def image_callback(self, msg):
         frame = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
 
+        h, w = frame.shape[:2]
+        scale = 800 / max(h, w)
+        frame = cv2.resize(frame, (int(w * scale), int(h * scale)))
+
         results = self.model(frame, conf=0.5, verbose=False)
         boxes = results[0].boxes
 
